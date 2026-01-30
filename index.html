@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Pernikahan Yugiono & Ersa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:Poppins,sans-serif;
+background:#f4f6fa;
+color:#333;
+scroll-behavior:smooth
+}
+.container{
+max-width:800px;
+margin:auto;
+background:#fff;
+padding:40px 20px
+}
+.center{text-align:center}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:44px;
+margin:14px 0
+}
+h2{margin-bottom:10px}
+p{line-height:1.7}
+
+.divider{
+width:80px;
+height:2px;
+background:#2c5aa0;
+margin:32px auto
+}
+.event-box{
+border:2px solid #2c5aa0;
+padding:22px;
+margin:26px 0;
+border-radius:14px
+}
+.date{font-size:42px;font-weight:bold}
+
+.btn{
+display:inline-block;
+background:#2c5aa0;
+color:#fff;
+padding:12px 22px;
+border-radius:30px;
+border:none;
+cursor:pointer;
+margin:8px
+}
+.btn:hover{background:#1f4278}
+
+input,select,textarea{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border-radius:8px;
+border:1px solid #ccc;
+font-family:Poppins,sans-serif
+}
+
+.gallery img{
+width:100%;
+border-radius:14px;
+margin-bottom:15px
+}
+
+footer{margin-top:50px;font-size:14px}
+
+/* COVER */
+#cover{
+position:fixed;
+inset:0;
+background:linear-gradient(#2c5aa0,#1f4278);
+color:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+z-index:9999;
+transition:1s
+}
+#cover.hide{
+opacity:0;
+transform:translateY(-100%);
+pointer-events:none
+}
+
+/* MUSIC */
+#musicBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:55px;
+height:55px;
+border-radius:50%;
+border:none;
+background:#2c5aa0;
+color:#fff;
+font-size:22px;
+z-index:999;
+cursor:pointer
+}
+</style>
+</head>
+
+<body>
+
+<!-- COVER -->
+<div id="cover">
+  <div>
+    <p>Undangan Pernikahan</p>
+    <h1>Yugiono & Ersa</h1>
+    <p>Rabu, 11 Februari 2026</p>
+    <button class="btn" onclick="openInvite()">💌 Buka Undangan</button>
+  </div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3">
+</audio>
+<button id="musicBtn">▶</button>
+
+<div class="container">
+
+<!-- PEMBUKA -->
+<div class="center">
+<p id="guest"></p>
+
+<p><strong>Maha suci Allah</strong><br>
+yang telah menciptakan makhluk-Nya berpasang-pasangan,<br>
+semoga ridho-Mu tercurah mengiringi pernikahan:</p>
+
+<h1>Yugiono</h1>
+<p>
+Putra dari<br>
+Bapak Sodiman<br>
+& Almh. Ibu Sarinah
+</p>
+
+<p style="margin:16px 0"><strong>Dengan</strong></p>
+
+<h1>Ersa Febriyanti</h1>
+<p>
+Putri dari<br>
+Bapak Sobirin<br>
+& Ibu Masturoh
+</p>
+
+<p style="font-style:italic;font-size:14px;margin-top:20px">
+QS Ar-Rum : 21
+</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ACARA -->
+<div class="center">
+<div class="event-box">
+<h2>Akad Nikah & Resepsi</h2>
+<p>Rabu</p>
+<div class="date">11</div>
+<p>Februari 2026</p>
+
+<p>
+<strong>Akad :</strong> 10.00 WIB<br>
+<strong>Resepsi :</strong> 09.00 WIB – Selesai
+</p>
+
+<p>
+Desa Banjaranyar Blok Dengul RT 005/005<br>
+Kec. Balapulang Kab. Tegal
+</p>
+
+<h3 id="countdown"></h3>
+
+<a class="btn" href="https://wa.me/6282247170876" target="_blank">💬 Konfirmasi WA</a>
+<a class="btn" href="https://maps.google.com/?q=Desa+Banjaranyar+Balapulang+Tegal" target="_blank">📍 Google Maps</a>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- GALERI -->
+<div class="center">
+<h2>Galeri Foto</h2>
+<div class="gallery">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- AMPLOP DIGITAL -->
+<div class="center">
+<h2>Amplop Digital</h2>
+<p>Doa restu Anda adalah hadiah terindah bagi kami</p>
+
+<div class="event-box">
+<strong>Bank BCA</strong><br>
+<span id="rek1">8930367533</span><br>
+a.n Yugiono<br>
+<button class="btn" onclick="copyRek('rek1')">📋 Salin</button>
+</div>
+
+<div class="event-box">
+<strong>Bank Aladin</strong><br>
+<span id="rek2">50218664765</span><br>
+a.n Ersa Febriyanti<br>
+<button class="btn" onclick="copyRek('rek2')">📋 Salin</button>
+</div>
+
+<div class="event-box">
+<strong>DANA</strong><br>
+<span id="rek3">0895360773737</span><br>
+a.n Ersa Febriyanti<br>
+<button class="btn" onclick="copyRek('rek3')">📋 Salin</button>
+</div>
+
+<div class="event-box">
+<strong>ShopeePay</strong><br>
+<span id="rek4">082247170876</span><br>
+a.n Ersa Febriyanti<br>
+<button class="btn" onclick="copyRek('rek4')">📋 Salin</button>
+</div>
+
+<div class="event-box">
+<strong>GoPay</strong><br>
+<span id="rek5">082247170976</span><br>
+a.n Ersa Febriyanti<br>
+<button class="btn" onclick="copyRek('rek5')">📋 Salin</button>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- RSVP -->
+<div class="center">
+<h2>RSVP & Ucapan</h2>
+
+<form id="rsvpForm" class="event-box">
+<input id="nama" placeholder="Nama Anda" required>
+<select id="hadir" required>
+<option value="">Konfirmasi Kehadiran</option>
+<option>Hadir</option>
+<option>Tidak Hadir</option>
+</select>
+<textarea id="ucapan" placeholder="Tulis doa & ucapan"></textarea>
+<button class="btn">📨 Kirim</button>
+</form>
+
+<div id="ucapanList"></div>
+</div>
+
+<footer class="center">
+<p><strong>Kami yang berbahagia</strong></p>
+<p>
+Bapak Sodiman & Almh. Ibu Sarinah<br><br>
+Bapak Sobirin & Ibu Masturoh
+</p>
+</footer>
+
+</div>
+
+<script>
+function openInvite(){
+cover.classList.add("hide");
+music.play();
+musicBtn.innerHTML="⏸";
+}
+
+musicBtn.onclick=()=>music.paused
+?(music.play(),musicBtn.innerHTML="⏸")
+:(music.pause(),musicBtn.innerHTML="▶");
+
+const g=new URLSearchParams(location.search).get("to");
+if(g) guest.innerHTML="Yth. "+g;
+
+const t=new Date("February 11, 2026 09:00").getTime();
+setInterval(()=>{
+const d=t-Date.now();
+countdown.innerHTML=d<=0
+?"Hari Bahagia Telah Tiba 💍"
+:`⏳ ${Math.floor(d/86400000)} Hari ${Math.floor(d/3600000)%24} Jam ${Math.floor(d/60000)%60} Menit`;
+},1000);
+
+function copyRek(id){
+navigator.clipboard.writeText(document.getElementById(id).innerText);
+alert("Berhasil disalin 🤍");
+}
+
+rsvpForm.onsubmit=e=>{
+e.preventDefault();
+const box=document.createElement("div");
+box.className="event-box";
+box.innerHTML=`<strong>${nama.value}</strong><br><em>${hadir.value}</em><p>${ucapan.value}</p>`;
+ucapanList.prepend(box);
+e.target.reset();
+};
+</script>
+
+</body>
+</html>
