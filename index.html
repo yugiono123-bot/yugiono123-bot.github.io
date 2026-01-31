@@ -5,68 +5,120 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Undangan Pernikahan Yugiono & Ersa</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+
 <style>
-body{
+html,body{
   margin:0;
-  font-family:Georgia,serif;
-  background:linear-gradient(180deg,#0b0a07,#1b1408);
-  color:#f7e7c4;
-  text-align:center;
+  padding:0;
+  font-family:'Playfair Display',serif;
+  background:#fffef8;
+  color:#4a3b1f;
   overflow-x:hidden;
 }
-section{padding:40px 20px}
-h1,h2,h3{color:#f7d98a}
+
+section{padding:50px 20px;text-align:center}
+
 .card{
   max-width:650px;
-  margin:20px auto;
+  margin:0 auto;
   padding:25px;
-  background:rgba(0,0,0,.5);
-  border:1px solid #d4af37;
+  background:#fff;
   border-radius:20px;
+  border:1px solid #d4af37;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
+
 .divider{
-  width:80px;height:3px;
+  width:80px;
+  height:3px;
   background:#d4af37;
   margin:15px auto;
 }
+
+.nama{
+  font-family:'Great Vibes',cursive;
+  font-size:46px;
+  color:#8b6b2e;
+}
+
 .btn{
   display:inline-block;
-  margin-top:15px;
-  padding:12px 25px;
+  margin-top:18px;
+  padding:14px 32px;
   background:#d4af37;
   color:#000;
   border-radius:30px;
-  text-decoration:none;
   font-weight:bold;
+  text-decoration:none;
 }
+
+/* COVER */
 .cover{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
 }
-
-/* daun */
-.leaf{
-  position:fixed;
-  top:-30px;
-  animation:fall linear infinite;
-  z-index:0;
+.photo{
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  overflow:hidden;
+  border:4px solid #d4af37;
+  margin-bottom:20px;
 }
-@keyframes fall{
-  to{transform:translateY(110vh) rotate(360deg)}
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-/* slider */
-.slider{overflow:hidden;border-radius:15px}
-.slides{display:flex;transition:.6s}
-.slides img{width:100%;flex-shrink:0}
-input,select,textarea{
+/* GALERI CINEMATIC */
+.cinematic-gallery{
+  width:100%;
+  height:320px;
+  position:relative;
+  overflow:hidden;
+  border-radius:15px;
+}
+
+.cinematic-gallery img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.08);
+  transition:opacity 1.5s ease, transform 6s ease;
+}
+
+.cinematic-gallery img.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* FORM */
+input,select{
   width:100%;
   padding:12px;
+  margin:8px 0;
   border-radius:10px;
-  margin-bottom:10px;
+  border:1px solid #ccc;
+}
+
+/* ANIMASI */
+.fade-out{animation:fadeOut .8s forwards}
+.fade-in{animation:fadeIn 1.2s forwards}
+
+@keyframes fadeOut{
+  to{opacity:0}
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -77,176 +129,172 @@ input,select,textarea{
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<script>
-for(let i=0;i<20;i++){
- let l=document.createElement("div");
- l.className="leaf";
- l.innerHTML="🍂";
- l.style.left=Math.random()*100+"vw";
- l.style.animationDuration=6+Math.random()*6+"s";
- document.body.appendChild(l);
-}
-</script>
-
-<div class="cover">
-<h2>Undangan Pernikahan</h2>
-<h1>Yugiono & Ersa</h1>
-<p>Kepada Yth:</p>
-<h3 id="tamu">Tamu Undangan</h3>
-<a class="btn" onclick="buka()">Buka Undangan</a>
+<!-- COVER -->
+<div class="cover" id="cover">
+  <div class="photo">
+    <img src="cover.jpg">
+  </div>
+  <h3>Undangan Pernikahan</h3>
+  <div class="nama">Yugiono & Ersa</div>
+  <a class="btn" onclick="buka()">Buka Undangan</a>
 </div>
 
-<div id="isi" style="display:none;position:relative;z-index:2">
+<!-- ISI -->
+<div id="isi" style="display:none;opacity:0">
 
 <section>
-<div class="card">
-<p><i>
-"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup dari jenismu sendiri..."
-</i><br>(QS. Ar-Rum : 21)</p>
-</div>
+  <div class="card">
+    <p>Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami.</p>
+  </div>
 </section>
 
 <section>
-<div class="card">
-<h2>Yugiono</h2>
-<p>Putra dari Bapak Sodiman & Almh. Ibu Sarinah</p>
-<div class="divider"></div>
-<h2>Ersa Febriyanti</h2>
-<p>Putri dari Bapak Sobirin & Ibu Masturoh</p>
-</div>
+  <div class="card">
+    <p><i>“Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan hidup…”</i><br>(QS. Ar-Rum : 21)</p>
+  </div>
 </section>
 
 <section>
-<div class="card">
-<h3>Akad Nikah & Resepsi</h3>
-<div class="divider"></div>
-<p>
-<b>Rabu, 11 Februari 2026</b><br><br>
-Akad : 10.00 WIB<br>
-Resepsi : 09.00 WIB – Selesai
-</p>
-</div>
+  <div class="card">
+    <div class="nama">Yugiono</div>
+    <p>Putra Bapak Sodiman & Almh. Ibu Sarinah</p>
+    <div class="divider"></div>
+    <div class="nama">Ersa Febriyanti</div>
+    <p>Putri Bapak Sobirin & Ibu Masturoh</p>
+  </div>
 </section>
 
 <section>
-<div class="card">
-<h3>Galeri Foto</h3>
-<div class="divider"></div>
-<div class="slider">
-<div class="slides" id="slides">
-<img src="foto1.jpg">
-<img src="foto2.jpg">
-<img src="foto3.jpg">
-</div>
-</div>
-</div>
+  <div class="card">
+    <h3>Akad & Resepsi</h3>
+    <div class="divider"></div>
+    <p>
+      <b>Rabu, 11 Februari 2026</b><br><br>
+      Akad : 10.00 WIB<br>
+      Resepsi : 09.00 WIB – Selesai
+    </p>
+  </div>
+</section>
+
+<!-- GALERI 4 FOTO -->
+<section>
+  <div class="card">
+    <h3>Galeri Foto</h3>
+    <div class="divider"></div>
+    <div class="cinematic-gallery">
+      <img src="foto1.jpg" class="active">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+      <img src="foto4.jpg">
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section>
+  <div class="card">
+    <h3>Lokasi Acara</h3>
+    <div class="divider"></div>
+    <p>
+      Desa Banjaranyar Blok Dengkul RT 005/005<br>
+      Kec. Balapulang – Kab. Tegal
+    </p>
+
+    <a class="btn" target="_blank"
+    href="https://www.google.com/maps/search/?api=1&query=Blok+Dengkul+RT+005+RW+005+Desa+Banjaranyar+Balapulang+Tegal">
+      Buka Google Maps
+    </a>
+
+    <div style="margin-top:20px;border-radius:15px;overflow:hidden">
+      <iframe
+        src="https://www.google.com/maps?q=Blok+Dengkul+RT+005+RW+005+Desa+Banjaranyar+Balapulang+Tegal&z=17&output=embed"
+        width="100%" height="300" style="border:0" loading="lazy">
+      </iframe>
+    </div>
+  </div>
 </section>
 
 <section>
-<div class="card">
-<h3>Lokasi Acara</h3>
-<div class="divider"></div>
-<p>
-Desa Banjarsari Blok Dengkul RT 005/005<br>
-Kec. Balapulang – Kab. Tegal
-</p>
-
-<a class="btn" target="_blank"
-href="https://www.google.com/maps/search/?api=1&query=Desa+Banjarsari+Blok+Dengkul+Balapulang+Tegal">
-Buka Google Maps
-</a>
-
-<div style="margin-top:15px;border-radius:15px;overflow:hidden">
-<iframe
-src="https://maps.google.com/maps?q=Desa%20Banjarsari%20Blok%20Dengkul%20Balapulang%20Tegal&z=15&output=embed"
-width="100%" height="300" style="border:0">
-</iframe>
-</div>
-</div>
+  <div class="card">
+    <h3>Amplop Digital</h3>
+    <div class="divider"></div>
+    <p><b>BCA</b><br>8930367533<br>a.n Yugiono</p>
+    <p><b>Bank Aladin Syariah</b><br>50218664765</p>
+    <p><b>E-Wallet</b><br>082247170876</p>
+  </div>
 </section>
 
 <section>
-<div class="card">
-<h3>Doa Pernikahan</h3>
-<div class="divider"></div>
-<p><b>
-Allahumma barik lahuma wa barik ‘alaihuma wajma’ bainahuma fii khoir
-</b></p>
-<p>
-Semoga Allah menjadikan keluarga yang
-<b>Sakinah, Mawaddah, Warahmah</b>
-</p>
-<p>
-اللَّهُمَّ صَلِّ عَلَىٰ سَيِّدِنَا مُحَمَّدٍ
-</p>
-</div>
+  <div class="card">
+    <h3>Konfirmasi Kehadiran</h3>
+    <div class="divider"></div>
+    <input id="namaHadir" placeholder="Nama Anda">
+    <select id="statusHadir">
+      <option value="">Pilih Kehadiran</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Tidak Hadir">Tidak Hadir</option>
+    </select>
+    <a class="btn" onclick="kirimHadir()">Kirim ke WhatsApp</a>
+  </div>
 </section>
 
 <section>
-<div class="card">
-<h3>Amplop Digital</h3>
-<div class="divider"></div>
-<p><b>BCA</b><br>8930367533<br>A/n Yugiono</p>
-<p><b>Bank Aladin Syariah</b><br>50218664765</p>
-<p><b>All E-Wallet</b><br>082247170876</p>
-</div>
+  <div class="card">
+    <h3>Konfirmasi Bukti Transfer</h3>
+    <div class="divider"></div>
+    <input id="namaTransfer" placeholder="Nama Pengirim">
+    <input id="bankTransfer" placeholder="Bank / E-Wallet">
+    <input id="jumlahTransfer" placeholder="Jumlah Transfer">
+    <a class="btn" onclick="kirimTransfer()">Kirim Bukti ke WhatsApp</a>
+  </div>
 </section>
 
 <section>
-<div class="card">
-<h3>Konfirmasi Kehadiran</h3>
-<div class="divider"></div>
-
-<input id="nama" placeholder="Nama Anda">
-<select id="status">
-<option value="">Pilih Kehadiran</option>
-<option value="Hadir">Hadir</option>
-<option value="Tidak Hadir">Tidak Hadir</option>
-</select>
-<textarea id="pesan" placeholder="Ucapan & Doa"></textarea>
-<a class="btn" onclick="kirim()">Kirim ke WhatsApp</a>
-</div>
-</section>
-
-<section>
-<div class="card">
-<p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
-<p>Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
-<h3>Yugiono & Ersa</h3>
-</div>
+  <div class="card">
+    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+    <p>Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <div class="nama">Yugiono & Ersa</div>
+  </div>
 </section>
 
 </div>
 
 <script>
 function buka(){
- document.querySelector(".cover").style.display="none";
- document.getElementById("isi").style.display="block";
- document.getElementById("music").play();
+  document.getElementById("music").play().catch(()=>{});
+  cover.classList.add("fade-out");
+  setTimeout(()=>{
+    cover.style.display="none";
+    isi.style.display="block";
+    isi.classList.add("fade-in");
+    window.scrollTo(0,0);
+  },800);
 }
-const p=new URLSearchParams(location.search);
-if(p.get("to"))document.getElementById("tamu").innerText=p.get("to");
 
+/* SLIDE GALERI 4 FOTO */
+const imgs=document.querySelectorAll(".cinematic-gallery img");
 let i=0;
 setInterval(()=>{
- document.getElementById("slides").style.transform=
- "translateX(-"+(++i%3)*100+"%)";
-},3000);
+  imgs[i].classList.remove("active");
+  i=(i+1)%imgs.length;
+  imgs[i].classList.add("active");
+},7000);
 
-function kirim(){
- let n=document.getElementById("nama").value||"Tamu";
- let s=document.getElementById("status").value;
- let p=document.getElementById("pesan").value||"-";
- if(!s){alert("Pilih kehadiran");return;}
- let txt=`Assalamu’alaikum
+function kirimHadir(){
+  const nama=document.getElementById("namaHadir").value||"Tamu";
+  const status=document.getElementById("statusHadir").value;
+  if(!status){alert("Pilih kehadiran");return;}
+  const txt=`Assalamu’alaikum\n\nKonfirmasi Kehadiran:\nNama: ${nama}\nStatus: ${status}`;
+  window.open("https://wa.me/6282247170876?text="+encodeURIComponent(txt));
+}
 
-Konfirmasi Kehadiran:
-Nama : ${n}
-Status : ${s}
-
-Ucapan:
-${p}`;
- window.open("https://wa.me/6282247170876?text="+encodeURIComponent(txt));
+function kirimTransfer(){
+  const nama=document.getElementById("namaTransfer").value||"-";
+  const bank=document.getElementById("bankTransfer").value||"-";
+  const jumlah=document.getElementById("jumlahTransfer").value||"-";
+  const txt=`Assalamu’alaikum\n\nKonfirmasi Bukti Transfer:\nNama: ${nama}\nBank/E-Wallet: ${bank}\nJumlah: ${jumlah}`;
+  window.open("https://wa.me/6282247170876?text="+encodeURIComponent(txt));
 }
 </script>
 
