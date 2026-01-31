@@ -9,108 +9,55 @@
 
 <style>
 html,body{
-  margin:0;
-  padding:0;
+  margin:0;padding:0;
   font-family:'Playfair Display',serif;
-  background:#fffef8;
-  color:#4a3b1f;
-  overflow-x:hidden;
+  background:#fffef8;color:#4a3b1f;
+  overflow-x:hidden
 }
-
 section{padding:50px 20px;text-align:center}
-
 .card{
-  max-width:650px;
-  margin:0 auto;
-  padding:25px;
-  background:#fff;
-  border-radius:20px;
+  max-width:650px;margin:0 auto;padding:25px;
+  background:#fff;border-radius:20px;
   border:1px solid #d4af37;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  box-shadow:0 8px 20px rgba(0,0,0,.08)
 }
-
-.divider{
-  width:80px;
-  height:3px;
-  background:#d4af37;
-  margin:15px auto;
-}
-
-.nama{
-  font-family:'Great Vibes',cursive;
-  font-size:46px;
-  color:#8b6b2e;
-}
-
+.divider{width:80px;height:3px;background:#d4af37;margin:15px auto}
+.nama{font-family:'Great Vibes',cursive;font-size:46px;color:#8b6b2e}
 .btn{
-  display:inline-block;
-  margin-top:18px;
-  padding:14px 32px;
-  background:#d4af37;
-  color:#000;
-  border-radius:30px;
-  font-weight:bold;
-  text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:16px;padding:14px 32px;
+  background:#d4af37;color:#000;
+  border-radius:30px;font-weight:bold;
+  text-decoration:none;cursor:pointer
 }
-
-/* COVER */
+.btn img{width:22px;height:22px}
 .cover{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
+  min-height:100vh;display:flex;
+  flex-direction:column;justify-content:center;align-items:center
 }
 .photo{
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  overflow:hidden;
-  border:4px solid #d4af37;
-  margin-bottom:20px;
+  width:160px;height:160px;border-radius:50%;
+  overflow:hidden;border:4px solid #d4af37;margin-bottom:20px
 }
-.photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* GALERI */
+.photo img{width:100%;height:100%;object-fit:cover}
 .cinematic-gallery{
-  width:100%;
-  height:320px;
-  position:relative;
-  overflow:hidden;
-  border-radius:15px;
+  width:100%;height:320px;position:relative;
+  overflow:hidden;border-radius:15px
 }
 .cinematic-gallery img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:0;
-  transform:scale(1.08);
-  transition:opacity 1.5s ease, transform 6s ease;
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;opacity:0;transform:scale(1.08);
+  transition:opacity 1.5s ease,transform 6s ease
 }
-.cinematic-gallery img.active{
-  opacity:1;
-  transform:scale(1);
-}
-
+.cinematic-gallery img.active{opacity:1;transform:scale(1)}
 input,select{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:1px solid #ccc;
+  width:100%;padding:12px;margin:8px 0;
+  border-radius:10px;border:1px solid #ccc
 }
-
 .fade-out{animation:fadeOut .8s forwards}
 .fade-in{animation:fadeIn 1.2s forwards}
-
 @keyframes fadeOut{to{opacity:0}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1}}
 </style>
 </head>
 
@@ -122,9 +69,7 @@ input,select{
 
 <!-- COVER -->
 <div class="cover" id="cover">
-  <div class="photo">
-    <img src="cover.jpg">
-  </div>
+  <div class="photo"><img src="cover.jpg"></div>
   <h3>Undangan Pernikahan</h3>
   <div class="nama">Yugiono & Ersa</div>
   <p>Kepada Yth:</p>
@@ -162,7 +107,9 @@ input,select{
   <div class="card">
     <h3>Akad & Resepsi</h3>
     <div class="divider"></div>
-    <p><b>Rabu, 11 Februari 2026</b><br><br>Akad : 10.00 WIB<br>Resepsi : 09.00 WIB – Selesai</p>
+    <p><b>Rabu, 11 Februari 2026</b><br><br>
+    Akad : 10.00 WIB<br>
+    Resepsi : 09.00 WIB – Selesai</p>
   </div>
 </section>
 
@@ -183,13 +130,20 @@ input,select{
   <div class="card">
     <h3>Lokasi Acara</h3>
     <div class="divider"></div>
-    <p>Desa Banjaranyar Blok Dengkul RT 005/005<br>Kec. Balapulang – Kab. Tegal</p>
+    <p>Banjar Anyar, Desa Banjaranyar<br>
+    Kec. Balapulang – Kab. Tegal, Jawa Tengah</p>
+
     <a class="btn" target="_blank"
-    href="https://www.google.com/maps/search/?api=1&query=Blok+Dengkul+RT+005+RW+005+Desa+Banjaranyar+Balapulang+Tegal">
-    Buka Google Maps</a>
+      href="https://www.google.com/maps?q=-7.089483,109.081946">
+      📍 Buka Google Maps
+    </a>
+
     <div style="margin-top:20px;border-radius:15px;overflow:hidden">
-      <iframe src="https://www.google.com/maps?q=Blok+Dengkul+RT+005+RW+005+Desa+Banjaranyar+Balapulang+Tegal&z=17&output=embed"
-      width="100%" height="300" style="border:0"></iframe>
+      <iframe
+        src="https://www.google.com/maps?q=-7.089483,109.081946&z=17&output=embed"
+        width="100%" height="300"
+        style="border:0" loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
@@ -198,23 +152,20 @@ input,select{
   <div class="card">
     <h3>Amplop Digital</h3>
     <div class="divider"></div>
-    <p><b>BCA</b><br>8930367533<br>a.n Yugiono</p>
-    <p><b>Bank Aladin</b><br>50218664765</p>
-    <p><b>E-Wallet</b><br>082247170876</p>
-  </div>
-</section>
 
-<section>
-  <div class="card">
-    <h3>Konfirmasi Kehadiran</h3>
-    <div class="divider"></div>
-    <input id="namaHadir" placeholder="Nama Anda">
-    <select id="statusHadir">
-      <option value="">Pilih Kehadiran</option>
-      <option value="Hadir">Hadir</option>
-      <option value="Tidak Hadir">Tidak Hadir</option>
-    </select>
-    <a class="btn" onclick="kirimHadir()">Kirim ke WhatsApp</a>
+    <p><b>BCA</b><br>8930367533<br>a.n Yugiono</p>
+    <a class="btn" target="_blank"
+      href="https://wa.me/6282247170876?text=Assalamu’alaikum,%20saya%20ingin%20konfirmasi%20transfer%20BCA%20untuk%20Yugiono%20dan%20Ersa">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+      Konfirmasi BCA
+    </a>
+
+    <p style="margin-top:20px"><b>Bank Aladin</b><br>50218664765</p>
+    <a class="btn" target="_blank"
+      href="https://wa.me/6282247170876?text=Assalamu’alaikum,%20saya%20ingin%20konfirmasi%20transfer%20Bank%20Aladin%20untuk%20Yugiono%20dan%20Ersa">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+      Konfirmasi Bank Aladin
+    </a>
   </div>
 </section>
 
@@ -248,11 +199,10 @@ setInterval(()=>{
   imgs[i].classList.add("active");
 },7000);
 
-/* NAMA TAMU DARI URL */
-const params = new URLSearchParams(window.location.search);
-const nama = params.get("to");
+const params=new URLSearchParams(window.location.search);
+const nama=params.get("to");
 if(nama){
-  document.getElementById("namaTamu").innerText =
+  document.getElementById("namaTamu").innerText=
     decodeURIComponent(nama.replace(/\+/g," "));
 }
 </script>
