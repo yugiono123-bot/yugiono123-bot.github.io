@@ -75,7 +75,7 @@ section{padding:50px 20px;text-align:center}
   object-fit:cover;
 }
 
-/* GALERI CINEMATIC */
+/* GALERI */
 .cinematic-gallery{
   width:100%;
   height:320px;
@@ -83,7 +83,6 @@ section{padding:50px 20px;text-align:center}
   overflow:hidden;
   border-radius:15px;
 }
-
 .cinematic-gallery img{
   position:absolute;
   inset:0;
@@ -94,13 +93,11 @@ section{padding:50px 20px;text-align:center}
   transform:scale(1.08);
   transition:opacity 1.5s ease, transform 6s ease;
 }
-
 .cinematic-gallery img.active{
   opacity:1;
   transform:scale(1);
 }
 
-/* FORM */
 input,select{
   width:100%;
   padding:12px;
@@ -109,17 +106,11 @@ input,select{
   border:1px solid #ccc;
 }
 
-/* ANIMASI */
 .fade-out{animation:fadeOut .8s forwards}
 .fade-in{animation:fadeIn 1.2s forwards}
 
-@keyframes fadeOut{
-  to{opacity:0}
-}
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:none}
-}
+@keyframes fadeOut{to{opacity:0}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
 </style>
 </head>
 
@@ -136,6 +127,8 @@ input,select{
   </div>
   <h3>Undangan Pernikahan</h3>
   <div class="nama">Yugiono & Ersa</div>
+  <p>Kepada Yth:</p>
+  <h3 id="namaTamu">Tamu Undangan</h3>
   <a class="btn" onclick="buka()">Buka Undangan</a>
 </div>
 
@@ -169,15 +162,10 @@ input,select{
   <div class="card">
     <h3>Akad & Resepsi</h3>
     <div class="divider"></div>
-    <p>
-      <b>Rabu, 11 Februari 2026</b><br><br>
-      Akad : 10.00 WIB<br>
-      Resepsi : 09.00 WIB – Selesai
-    </p>
+    <p><b>Rabu, 11 Februari 2026</b><br><br>Akad : 10.00 WIB<br>Resepsi : 09.00 WIB – Selesai</p>
   </div>
 </section>
 
-<!-- GALERI 4 FOTO -->
 <section>
   <div class="card">
     <h3>Galeri Foto</h3>
@@ -191,26 +179,17 @@ input,select{
   </div>
 </section>
 
-<!-- MAP -->
 <section>
   <div class="card">
     <h3>Lokasi Acara</h3>
     <div class="divider"></div>
-    <p>
-      Desa Banjaranyar Blok Dengkul RT 005/005<br>
-      Kec. Balapulang – Kab. Tegal
-    </p>
-
+    <p>Desa Banjaranyar Blok Dengkul RT 005/005<br>Kec. Balapulang – Kab. Tegal</p>
     <a class="btn" target="_blank"
     href="https://www.google.com/maps/search/?api=1&query=Blok+Dengkul+RT+005+RW+005+Desa+Banjaranyar+Balapulang+Tegal">
-      Buka Google Maps
-    </a>
-
+    Buka Google Maps</a>
     <div style="margin-top:20px;border-radius:15px;overflow:hidden">
-      <iframe
-        src="https://www.google.com/maps?q=Blok+Dengkul+RT+005+RW+005+Desa+Banjaranyar+Balapulang+Tegal&z=17&output=embed"
-        width="100%" height="300" style="border:0" loading="lazy">
-      </iframe>
+      <iframe src="https://www.google.com/maps?q=Blok+Dengkul+RT+005+RW+005+Desa+Banjaranyar+Balapulang+Tegal&z=17&output=embed"
+      width="100%" height="300" style="border:0"></iframe>
     </div>
   </div>
 </section>
@@ -220,7 +199,7 @@ input,select{
     <h3>Amplop Digital</h3>
     <div class="divider"></div>
     <p><b>BCA</b><br>8930367533<br>a.n Yugiono</p>
-    <p><b>Bank Aladin Syariah</b><br>50218664765</p>
+    <p><b>Bank Aladin</b><br>50218664765</p>
     <p><b>E-Wallet</b><br>082247170876</p>
   </div>
 </section>
@@ -236,17 +215,6 @@ input,select{
       <option value="Tidak Hadir">Tidak Hadir</option>
     </select>
     <a class="btn" onclick="kirimHadir()">Kirim ke WhatsApp</a>
-  </div>
-</section>
-
-<section>
-  <div class="card">
-    <h3>Konfirmasi Bukti Transfer</h3>
-    <div class="divider"></div>
-    <input id="namaTransfer" placeholder="Nama Pengirim">
-    <input id="bankTransfer" placeholder="Bank / E-Wallet">
-    <input id="jumlahTransfer" placeholder="Jumlah Transfer">
-    <a class="btn" onclick="kirimTransfer()">Kirim Bukti ke WhatsApp</a>
   </div>
 </section>
 
@@ -272,7 +240,6 @@ function buka(){
   },800);
 }
 
-/* SLIDE GALERI 4 FOTO */
 const imgs=document.querySelectorAll(".cinematic-gallery img");
 let i=0;
 setInterval(()=>{
@@ -281,20 +248,12 @@ setInterval(()=>{
   imgs[i].classList.add("active");
 },7000);
 
-function kirimHadir(){
-  const nama=document.getElementById("namaHadir").value||"Tamu";
-  const status=document.getElementById("statusHadir").value;
-  if(!status){alert("Pilih kehadiran");return;}
-  const txt=`Assalamu’alaikum\n\nKonfirmasi Kehadiran:\nNama: ${nama}\nStatus: ${status}`;
-  window.open("https://wa.me/6282247170876?text="+encodeURIComponent(txt));
-}
-
-function kirimTransfer(){
-  const nama=document.getElementById("namaTransfer").value||"-";
-  const bank=document.getElementById("bankTransfer").value||"-";
-  const jumlah=document.getElementById("jumlahTransfer").value||"-";
-  const txt=`Assalamu’alaikum\n\nKonfirmasi Bukti Transfer:\nNama: ${nama}\nBank/E-Wallet: ${bank}\nJumlah: ${jumlah}`;
-  window.open("https://wa.me/6282247170876?text="+encodeURIComponent(txt));
+/* NAMA TAMU DARI URL */
+const params = new URLSearchParams(window.location.search);
+const nama = params.get("to");
+if(nama){
+  document.getElementById("namaTamu").innerText =
+    decodeURIComponent(nama.replace(/\+/g," "));
 }
 </script>
 
