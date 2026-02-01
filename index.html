@@ -8,68 +8,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
-html,body{
-  margin:0;padding:0;
-  font-family:'Playfair Display',serif;
-  background:#fffef8;color:#4a3b1f;
-  overflow-x:hidden
-}
-section{padding:50px 20px;text-align:center}
-.card{
-  max-width:650px;margin:0 auto;padding:25px;
-  background:#fff;border-radius:20px;
-  border:1px solid #d4af37;
-  box-shadow:0 8px 20px rgba(0,0,0,.08)
-}
-.divider{width:80px;height:3px;background:#d4af37;margin:15px auto}
-.nama{font-family:'Great Vibes',cursive;font-size:46px;color:#8b6b2e}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:16px;padding:14px 32px;
-  background:#d4af37;color:#000;
-  border-radius:30px;font-weight:bold;
-  text-decoration:none;cursor:pointer
-}
-.btn img{width:22px;height:22px}
-.cover{
-  min-height:100vh;display:flex;
-  flex-direction:column;justify-content:center;align-items:center
-}
-.photo{
-  width:160px;height:160px;border-radius:50%;
-  overflow:hidden;border:4px solid #d4af37;margin-bottom:20px
-}
+html,body{margin:0;padding:0;font-family:'Playfair Display',serif;background:#fffef8;color:#4a3b1f}
+section{padding:45px 20px;text-align:center}
+.card{max-width:680px;margin:auto;padding:28px;background:#fff;border-radius:22px;border:1px solid #d4af37;box-shadow:0 10px 25px rgba(0,0,0,.08)}
+.divider{width:90px;height:3px;background:#d4af37;margin:18px auto}
+.nama{font-family:'Great Vibes',cursive;font-size:48px;color:#8b6b2e}
+.btn{display:inline-flex;align-items:center;gap:8px;margin:8px;padding:14px 32px;background:#d4af37;color:#000;border-radius:30px;font-weight:bold;text-decoration:none;cursor:pointer}
+
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.photo{width:170px;height:170px;border-radius:50%;overflow:hidden;border:5px solid #d4af37;margin-bottom:20px;background:#eee}
 .photo img{width:100%;height:100%;object-fit:cover}
-.cinematic-gallery{
-  width:100%;height:320px;position:relative;
-  overflow:hidden;border-radius:15px
-}
-.cinematic-gallery img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;opacity:0;transform:scale(1.08);
-  transition:opacity 1.5s ease,transform 6s ease
-}
-.cinematic-gallery img.active{opacity:1;transform:scale(1)}
-input,select{
-  width:100%;padding:12px;margin:8px 0;
-  border-radius:10px;border:1px solid #ccc
-}
-.fade-out{animation:fadeOut .8s forwards}
-.fade-in{animation:fadeIn 1.2s forwards}
-@keyframes fadeOut{to{opacity:0}}
-@keyframes fadeIn{from{opacity:0;transform:translateY(40px)}to{opacity:1}}
+
+.hidden{display:none}
+
+.countdown{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:15px}
+.cd{border:1px solid #d4af37;border-radius:14px;padding:10px 16px;min-width:72px}
+.cd h2{margin:0;color:#8b6b2e}
+
+.cinematic-gallery{width:100%;height:320px;position:relative;overflow:hidden;border-radius:16px}
+.cinematic-gallery img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.5s}
+.cinematic-gallery img.active{opacity:1}
+
+input,select{width:100%;padding:12px;margin:8px 0;border-radius:10px;border:1px solid #ccc}
+.copy{font-size:14px;color:#0066cc;cursor:pointer}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:999}
+.modal-box{background:#fff;padding:25px;border-radius:20px;width:90%;max-width:320px}
 </style>
 </head>
 
 <body>
 
+<!-- MUSIC -->
 <audio id="music" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- COVER -->
+<!-- ================= COVER ================= -->
 <div class="cover" id="cover">
-  <div class="photo"><img src="cover.jpg"></div>
+  <div class="photo">
+    <img src="cover.jpg"
+      alt="Yugiono & Ersa"
+      onerror="this.src='https://via.placeholder.com/300x300?text=Yugiono+%26+Ersa'">
+  </div>
+
   <h3>Undangan Pernikahan</h3>
   <div class="nama">Yugiono & Ersa</div>
   <p>Kepada Yth:</p>
@@ -77,12 +59,12 @@ input,select{
   <a class="btn" onclick="buka()">Buka Undangan</a>
 </div>
 
-<!-- ISI -->
-<div id="isi" style="display:none;opacity:0">
+<!-- ================= ISI ================= -->
+<div id="isi" class="hidden">
 
 <section>
   <div class="card">
-    <p>Assalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <p><b>Assalamu’alaikum Warahmatullahi Wabarakatuh</b></p>
     <p>Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami.</p>
   </div>
 </section>
@@ -107,9 +89,16 @@ input,select{
   <div class="card">
     <h3>Akad & Resepsi</h3>
     <div class="divider"></div>
-    <p><b>Rabu, 11 Februari 2026</b><br><br>
+    <p><b>Rabu, 11 Februari 2026</b><br>
     Akad : 10.00 WIB<br>
     Resepsi : 09.00 WIB – Selesai</p>
+
+    <div class="countdown">
+      <div class="cd"><h2 id="d">0</h2>Hari</div>
+      <div class="cd"><h2 id="h">0</h2>Jam</div>
+      <div class="cd"><h2 id="m">0</h2>Menit</div>
+      <div class="cd"><h2 id="s">0</h2>Detik</div>
+    </div>
   </div>
 </section>
 
@@ -130,21 +119,11 @@ input,select{
   <div class="card">
     <h3>Lokasi Acara</h3>
     <div class="divider"></div>
-    <p>Banjar Anyar, Desa Banjaranyar<br>
-    Kec. Balapulang – Kab. Tegal, Jawa Tengah</p>
-
+    <p>Banjar Anyar, Desa Banjaranyar<br>Kec. Balapulang – Kab. Tegal</p>
     <a class="btn" target="_blank"
       href="https://www.google.com/maps?q=-7.089483,109.081946">
-      📍 Buka Google Maps
+      📍 Google Maps
     </a>
-
-    <div style="margin-top:20px;border-radius:15px;overflow:hidden">
-      <iframe
-        src="https://www.google.com/maps?q=-7.089483,109.081946&z=17&output=embed"
-        width="100%" height="300"
-        style="border:0" loading="lazy">
-      </iframe>
-    </div>
   </div>
 </section>
 
@@ -153,58 +132,102 @@ input,select{
     <h3>Amplop Digital</h3>
     <div class="divider"></div>
 
-    <p><b>BCA</b><br>8930367533<br>a.n Yugiono</p>
-    <a class="btn" target="_blank"
-      href="https://wa.me/6282247170876?text=Assalamu’alaikum,%20saya%20ingin%20konfirmasi%20transfer%20BCA%20untuk%20Yugiono%20dan%20Ersa">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-      Konfirmasi BCA
-    </a>
+    <p><b>BCA</b><br><span id="bca">8930367533</span><br>a.n Yugiono<br>
+    <span class="copy" onclick="copyText('bca')">Salin Nomor</span></p>
+    <a class="btn" onclick="openModal('BCA')">Kirim Bukti Transfer</a>
 
-    <p style="margin-top:20px"><b>Bank Aladin</b><br>50218664765</p>
-    <a class="btn" target="_blank"
-      href="https://wa.me/6282247170876?text=Assalamu’alaikum,%20saya%20ingin%20konfirmasi%20transfer%20Bank%20Aladin%20untuk%20Yugiono%20dan%20Ersa">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-      Konfirmasi Bank Aladin
-    </a>
+    <hr>
+
+    <p><b>Bank Aladin</b><br><span id="aladin">50218664765</span><br>a.n Ersa Febriyanti<br>
+    <span class="copy" onclick="copyText('aladin')">Salin Nomor</span></p>
+    <a class="btn" onclick="openModal('Bank Aladin')">Kirim Bukti Transfer</a>
+
+    <hr>
+
+    <p><b>E-Wallet (DANA / OVO / GoPay / ShopeePay)</b><br>
+    <span id="ewallet">082247170876</span><br>
+    <span class="copy" onclick="copyText('ewallet')">Salin Nomor</span></p>
+    <a class="btn" onclick="openModal('E-Wallet')">Kirim Bukti Transfer</a>
   </div>
 </section>
 
 <section>
   <div class="card">
-    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
-    <p>Wassalamu’alaikum Warahmatullahi Wabarakatuh</p>
+    <h3>RSVP Kehadiran</h3>
+    <div class="divider"></div>
+    <input id="rsvpNama" placeholder="Nama Anda">
+    <select id="rsvpHadir">
+      <option value="">-- Konfirmasi --</option>
+      <option>Hadir</option>
+      <option>Tidak Hadir</option>
+    </select>
+    <a class="btn" onclick="kirimRSVP()">Kirim RSVP WhatsApp</a>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <p>Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+    <p><b>Wassalamu’alaikum Warahmatullahi Wabarakatuh</b></p>
     <div class="nama">Yugiono & Ersa</div>
   </div>
 </section>
 
 </div>
 
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3>Pilih Bukti Transfer</h3>
+    <input type="file" id="cam" accept="image/*" capture hidden onchange="kirimWA()">
+    <input type="file" id="gal" accept="image/*" hidden onchange="kirimWA()">
+    <a class="btn" onclick="cam.click()">📷 Kamera</a>
+    <a class="btn" onclick="gal.click()">🖼️ Galeri</a>
+    <a class="btn" onclick="modal.style.display='none'">Batal</a>
+  </div>
+</div>
+
 <script>
 function buka(){
   document.getElementById("music").play().catch(()=>{});
-  cover.classList.add("fade-out");
-  setTimeout(()=>{
-    cover.style.display="none";
-    isi.style.display="block";
-    isi.classList.add("fade-in");
-    window.scrollTo(0,0);
-  },800);
+  cover.style.display="none";
+  isi.classList.remove("hidden");
 }
+
+function copyText(id){
+  navigator.clipboard.writeText(document.getElementById(id).innerText);
+  alert("Nomor disalin");
+}
+
+let BANK="";
+function openModal(b){BANK=b;modal.style.display="flex"}
+function kirimWA(){
+  modal.style.display="none";
+  window.open(`https://wa.me/6282247170876?text=`+
+  encodeURIComponent(`Assalamu’alaikum, saya mengirim bukti transfer ${BANK} untuk Yugiono & Ersa`),'_blank');
+}
+
+function kirimRSVP(){
+  if(!rsvpNama.value||!rsvpHadir.value){alert("Lengkapi RSVP");return;}
+  window.open(`https://wa.me/6282247170876?text=`+
+  encodeURIComponent(`Saya ${rsvpNama.value}, RSVP: ${rsvpHadir.value}`),'_blank');
+}
+
+const akad=new Date("2026-02-11T10:00:00+07:00").getTime();
+setInterval(()=>{
+ let t=akad-new Date().getTime(); if(t<0)t=0;
+ d.innerText=Math.floor(t/86400000);
+ h.innerText=Math.floor(t/3600000)%24;
+ m.innerText=Math.floor(t/60000)%60;
+ s.innerText=Math.floor(t/1000)%60;
+},1000);
 
 const imgs=document.querySelectorAll(".cinematic-gallery img");
 let i=0;
-setInterval(()=>{
-  imgs[i].classList.remove("active");
-  i=(i+1)%imgs.length;
-  imgs[i].classList.add("active");
-},7000);
+setInterval(()=>{imgs[i].classList.remove("active");i=(i+1)%imgs.length;imgs[i].classList.add("active")},4000);
 
-const params=new URLSearchParams(window.location.search);
-const nama=params.get("to");
-if(nama){
-  document.getElementById("namaTamu").innerText=
-    decodeURIComponent(nama.replace(/\+/g," "));
-}
+const to=new URLSearchParams(location.search).get("to");
+if(to) namaTamu.innerText=decodeURIComponent(to.replace(/\+/g," "));
 </script>
 
 </body>
